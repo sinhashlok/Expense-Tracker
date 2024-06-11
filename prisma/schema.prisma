@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  name     String
+  email    String    @unique
+  password String
+  expenses Expense[]
+  budget   Budget?
+}
+
+model Expense {
+  id        Int      @id @default(autoincrement())
+  title     String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int      @unique
+}
+
+model EXPENSE_TYPE {
+  id    Int    @id @default(autoincrement())
+  title String
+}
+
+model Budget {
+  id           Int  @id @default(autoincrement())
+  totalSpent   Int  @default(0)
+  targetAmount Int  @default(10000)
+  amountLeft   Int  @default(10000)
+  user         User @relation(fields: [userId], references: [id])
+  userId       Int  @unique
+}
