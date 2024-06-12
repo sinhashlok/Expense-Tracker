@@ -49,7 +49,6 @@ export default function SignUp() {
       })
       .catch((err: AxiosError) => {
         console.log(err);
-
         const data: any = err?.response?.data;
         toast.error(data?.message), { duration: 6000 };
       });
