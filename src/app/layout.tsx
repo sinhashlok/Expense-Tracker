@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Expense Tracker",
@@ -16,7 +15,6 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-poppins">
         {children}
-        <Footer />
       </body>
     </html>
   );

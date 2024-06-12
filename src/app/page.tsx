@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Categories from "@/components/Home/Categories";
 import Featured from "@/components/Home/Featured";
 import Hero from "@/components/Home/Hero";
@@ -13,6 +14,7 @@ const page = () => {
         <h1 className="text-3xl md:text-xl lg:text-4xl text-center mt-20 mb-20 lg:mt-52 lg:mb-52 font-light">Save money like a pro with our expense tracking app</h1>
         <Featured />
       </div>
+      <Footer />
     </div>
   );
 };

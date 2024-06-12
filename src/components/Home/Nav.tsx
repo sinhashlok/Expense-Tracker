@@ -8,13 +8,15 @@ import {
   NavbarMenu,
   NavbarContent,
   NavbarItem,
-  Link,
 } from "@nextui-org/react";
 import { Button } from "@/components/ui/button";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const Nav = () => {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuItems = [
     {
@@ -36,6 +38,7 @@ const Nav = () => {
           isBordered
           isMenuOpen={isMenuOpen}
           onMenuOpenChange={setIsMenuOpen}
+          className="bg-white"
         >
           <NavbarContent className="sm:hidden" justify="start">
             <NavbarMenuToggle
@@ -45,42 +48,56 @@ const Nav = () => {
 
           <NavbarContent className="sm:hidden pr-3" justify="center">
             <NavbarBrand>
-              <p className="font-bold text-inherit">TRACKER</p>
+              <Link href="/" className="font-bold text-inherit">
+                TRACKER
+              </Link>
             </NavbarBrand>
           </NavbarContent>
           <NavbarContent className="hidden sm:flex pr-3" justify="start">
             <NavbarBrand>
-              <p className="font-bold text-inherit">TRACKER</p>
+              <Link href="/" className="font-bold text-inherit">
+                TRACKER
+              </Link>
             </NavbarBrand>
           </NavbarContent>
 
           <NavbarContent className="hidden sm:flex gap-4" justify="center">
             <NavbarItem>
-            <Button variant="link">
               <Link href="/about">
-                About
+                <Button variant="link" className="text-white">
+                  About
+                </Button>
               </Link>
-              </Button>
             </NavbarItem>
           </NavbarContent>
 
           <NavbarContent justify="end">
             <NavbarItem className="hidden lg:flex">
-              <Button variant="ghost">
-                <Link href="/login">Log in</Link>
-              </Button>
+              <Link href="/login">
+                <Button
+                  variant="ghost"
+                  className={`${pathname === "/login" && "underline"}`}
+                >
+                  Log in
+                </Button>
+              </Link>
             </NavbarItem>
             <NavbarItem>
-              <Button variant="ghost">
-                <Link href="/signup">Sign up</Link>
-              </Button>
+              <Link href="/signup">
+                <Button
+                  variant="ghost"
+                  className={`${pathname === "/signup" && "underline"}`}
+                >
+                  Sign up
+                </Button>
+              </Link>
             </NavbarItem>
           </NavbarContent>
 
           <NavbarMenu>
             {menuItems.map((item) => (
               <NavbarMenuItem key={item.id}>
-                <Link className="w-full" href={item.link} size="lg">
+                <Link className="w-full" href={item.link}>
                   {item.item}
                 </Link>
               </NavbarMenuItem>

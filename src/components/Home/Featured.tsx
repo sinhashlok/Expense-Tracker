@@ -28,7 +28,7 @@ const cardVariants: Variants = {
 
 const Featured = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mb-40">
       <motion.div
         className="card-container"
         initial="offscreen"
@@ -50,12 +50,14 @@ const Featured = () => {
                     wisely.
                   </div>
                   <div>
-                    <Button
-                      value="default"
-                      className="w-32 md:w-44 py-2 md:py-6 rounded-none text-[10px] md:text-sm"
-                    >
-                      <Link href="/login">Explore Features </Link>
-                    </Button>
+                    <Link href="/login">
+                      <Button
+                        value="default"
+                        className="w-32 md:w-44 py-2 md:py-6 rounded-none text-[10px] md:text-sm"
+                      >
+                        Explore Features
+                      </Button>
+                    </Link>
                   </div>
                 </CardBody>
               </Card>
@@ -66,7 +68,6 @@ const Featured = () => {
                   <Card
                     shadow="sm"
                     key={item.id}
-                    onPress={() => console.log("item pressed")}
                   >
                     <CardBody className="overflow-visible p-0">
                       <Image

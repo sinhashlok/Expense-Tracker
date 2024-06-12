@@ -38,7 +38,6 @@ const Categories = () => {
                 <Card
                   shadow="sm"
                   key={item.id}
-                  onPress={() => console.log("item pressed")}
                   isFooterBlurred
                   className="border-none"
                 >

@@ -6,7 +6,7 @@ import { SOCIAL_LINK } from "@/utils/data";
 
 const Footer = () => {
   return (
-    <div className=" border-t-2 p-20 mt-40">
+    <div className="border-t-2 p-10 bg-white">
       <div className="flex flex-row justify-center">
         <div className="flex flex-col mr-20 md:mr-44 items-center">
           <h1 className="font-bold text-inherit">TRACKER</h1>
@@ -24,7 +24,7 @@ const Footer = () => {
           <Link href="/login" className="mb-4 hover:underline">
             Log in
           </Link>
-          <Link href="/signup" className="mb-4 hover:underline">
+          <Link href="/signup" className="hover:underline">
             Sign up
           </Link>
         </div>
