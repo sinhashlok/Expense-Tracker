@@ -175,6 +175,8 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
+  "ciName": "Vercel",
   "inlineDatasources": {
     "db": {
       "url": {
@@ -185,7 +187,7 @@ const config = {
   },
   "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/client\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_DATABASE_URL\")\n}\n\nmodel User {\n  id          Int       @id @default(autoincrement())\n  name        String\n  email       String    @unique\n  password    String\n  expenses    Expense[]\n  budget      Budget?\n  isVerified  Boolean   @default(false)\n  verifyToken String?   @unique\n}\n\nmodel Expense {\n  id        Int      @id @default(autoincrement())\n  title     String\n  createdAt DateTime @default(now())\n  user      User     @relation(fields: [userId], references: [id])\n  userId    Int      @unique\n  month     Int\n}\n\nmodel EXPENSE_TYPE {\n  id    Int    @id @default(autoincrement())\n  title String\n}\n\nmodel Budget {\n  id           Int  @id @default(autoincrement())\n  targetAmount Int  @default(10000)\n  user         User @relation(fields: [userId], references: [id])\n  userId       Int  @unique\n}\n",
   "inlineSchemaHash": "101ffa658f2b82a7b75dd1a42f404e691f639652217091c56c2c355ed8bd168e",
-  "copyEngine": true
+  "copyEngine": false
 }
 config.dirname = '/'
 
