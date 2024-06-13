@@ -2221,11 +2221,13 @@ export namespace Prisma {
   export type ExpenseAvgAggregateOutputType = {
     id: number | null
     userId: number | null
+    month: number | null
   }
 
   export type ExpenseSumAggregateOutputType = {
     id: number | null
     userId: number | null
+    month: number | null
   }
 
   export type ExpenseMinAggregateOutputType = {
@@ -2233,6 +2235,7 @@ export namespace Prisma {
     title: string | null
     createdAt: Date | null
     userId: number | null
+    month: number | null
   }
 
   export type ExpenseMaxAggregateOutputType = {
@@ -2240,6 +2243,7 @@ export namespace Prisma {
     title: string | null
     createdAt: Date | null
     userId: number | null
+    month: number | null
   }
 
   export type ExpenseCountAggregateOutputType = {
@@ -2247,6 +2251,7 @@ export namespace Prisma {
     title: number
     createdAt: number
     userId: number
+    month: number
     _all: number
   }
 
@@ -2254,11 +2259,13 @@ export namespace Prisma {
   export type ExpenseAvgAggregateInputType = {
     id?: true
     userId?: true
+    month?: true
   }
 
   export type ExpenseSumAggregateInputType = {
     id?: true
     userId?: true
+    month?: true
   }
 
   export type ExpenseMinAggregateInputType = {
@@ -2266,6 +2273,7 @@ export namespace Prisma {
     title?: true
     createdAt?: true
     userId?: true
+    month?: true
   }
 
   export type ExpenseMaxAggregateInputType = {
@@ -2273,6 +2281,7 @@ export namespace Prisma {
     title?: true
     createdAt?: true
     userId?: true
+    month?: true
   }
 
   export type ExpenseCountAggregateInputType = {
@@ -2280,6 +2289,7 @@ export namespace Prisma {
     title?: true
     createdAt?: true
     userId?: true
+    month?: true
     _all?: true
   }
 
@@ -2374,6 +2384,7 @@ export namespace Prisma {
     title: string
     createdAt: Date
     userId: number
+    month: number
     _count: ExpenseCountAggregateOutputType | null
     _avg: ExpenseAvgAggregateOutputType | null
     _sum: ExpenseSumAggregateOutputType | null
@@ -2400,6 +2411,7 @@ export namespace Prisma {
     title?: boolean
     createdAt?: boolean
     userId?: boolean
+    month?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["expense"]>
 
@@ -2408,6 +2420,7 @@ export namespace Prisma {
     title?: boolean
     createdAt?: boolean
     userId?: boolean
+    month?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["expense"]>
 
@@ -2416,6 +2429,7 @@ export namespace Prisma {
     title?: boolean
     createdAt?: boolean
     userId?: boolean
+    month?: boolean
   }
 
   export type ExpenseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2435,6 +2449,7 @@ export namespace Prisma {
       title: string
       createdAt: Date
       userId: number
+      month: number
     }, ExtArgs["result"]["expense"]>
     composites: {}
   }
@@ -2859,6 +2874,7 @@ export namespace Prisma {
     readonly title: FieldRef<"Expense", 'String'>
     readonly createdAt: FieldRef<"Expense", 'DateTime'>
     readonly userId: FieldRef<"Expense", 'Int'>
+    readonly month: FieldRef<"Expense", 'Int'>
   }
     
 
@@ -4107,41 +4123,31 @@ export namespace Prisma {
 
   export type BudgetAvgAggregateOutputType = {
     id: number | null
-    totalSpent: number | null
     targetAmount: number | null
-    amountLeft: number | null
     userId: number | null
   }
 
   export type BudgetSumAggregateOutputType = {
     id: number | null
-    totalSpent: number | null
     targetAmount: number | null
-    amountLeft: number | null
     userId: number | null
   }
 
   export type BudgetMinAggregateOutputType = {
     id: number | null
-    totalSpent: number | null
     targetAmount: number | null
-    amountLeft: number | null
     userId: number | null
   }
 
   export type BudgetMaxAggregateOutputType = {
     id: number | null
-    totalSpent: number | null
     targetAmount: number | null
-    amountLeft: number | null
     userId: number | null
   }
 
   export type BudgetCountAggregateOutputType = {
     id: number
-    totalSpent: number
     targetAmount: number
-    amountLeft: number
     userId: number
     _all: number
   }
@@ -4149,41 +4155,31 @@ export namespace Prisma {
 
   export type BudgetAvgAggregateInputType = {
     id?: true
-    totalSpent?: true
     targetAmount?: true
-    amountLeft?: true
     userId?: true
   }
 
   export type BudgetSumAggregateInputType = {
     id?: true
-    totalSpent?: true
     targetAmount?: true
-    amountLeft?: true
     userId?: true
   }
 
   export type BudgetMinAggregateInputType = {
     id?: true
-    totalSpent?: true
     targetAmount?: true
-    amountLeft?: true
     userId?: true
   }
 
   export type BudgetMaxAggregateInputType = {
     id?: true
-    totalSpent?: true
     targetAmount?: true
-    amountLeft?: true
     userId?: true
   }
 
   export type BudgetCountAggregateInputType = {
     id?: true
-    totalSpent?: true
     targetAmount?: true
-    amountLeft?: true
     userId?: true
     _all?: true
   }
@@ -4276,9 +4272,7 @@ export namespace Prisma {
 
   export type BudgetGroupByOutputType = {
     id: number
-    totalSpent: number
     targetAmount: number
-    amountLeft: number
     userId: number
     _count: BudgetCountAggregateOutputType | null
     _avg: BudgetAvgAggregateOutputType | null
@@ -4303,27 +4297,21 @@ export namespace Prisma {
 
   export type BudgetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    totalSpent?: boolean
     targetAmount?: boolean
-    amountLeft?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["budget"]>
 
   export type BudgetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    totalSpent?: boolean
     targetAmount?: boolean
-    amountLeft?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["budget"]>
 
   export type BudgetSelectScalar = {
     id?: boolean
-    totalSpent?: boolean
     targetAmount?: boolean
-    amountLeft?: boolean
     userId?: boolean
   }
 
@@ -4341,9 +4329,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      totalSpent: number
       targetAmount: number
-      amountLeft: number
       userId: number
     }, ExtArgs["result"]["budget"]>
     composites: {}
@@ -4766,9 +4752,7 @@ export namespace Prisma {
    */ 
   interface BudgetFieldRefs {
     readonly id: FieldRef<"Budget", 'Int'>
-    readonly totalSpent: FieldRef<"Budget", 'Int'>
     readonly targetAmount: FieldRef<"Budget", 'Int'>
-    readonly amountLeft: FieldRef<"Budget", 'Int'>
     readonly userId: FieldRef<"Budget", 'Int'>
   }
     
@@ -5132,7 +5116,8 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     createdAt: 'createdAt',
-    userId: 'userId'
+    userId: 'userId',
+    month: 'month'
   };
 
   export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
@@ -5148,9 +5133,7 @@ export namespace Prisma {
 
   export const BudgetScalarFieldEnum: {
     id: 'id',
-    totalSpent: 'totalSpent',
     targetAmount: 'targetAmount',
-    amountLeft: 'amountLeft',
     userId: 'userId'
   };
 
@@ -5325,6 +5308,7 @@ export namespace Prisma {
     title?: StringFilter<"Expense"> | string
     createdAt?: DateTimeFilter<"Expense"> | Date | string
     userId?: IntFilter<"Expense"> | number
+    month?: IntFilter<"Expense"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
@@ -5333,6 +5317,7 @@ export namespace Prisma {
     title?: SortOrder
     createdAt?: SortOrder
     userId?: SortOrder
+    month?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -5344,6 +5329,7 @@ export namespace Prisma {
     NOT?: ExpenseWhereInput | ExpenseWhereInput[]
     title?: StringFilter<"Expense"> | string
     createdAt?: DateTimeFilter<"Expense"> | Date | string
+    month?: IntFilter<"Expense"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "userId">
 
@@ -5352,6 +5338,7 @@ export namespace Prisma {
     title?: SortOrder
     createdAt?: SortOrder
     userId?: SortOrder
+    month?: SortOrder
     _count?: ExpenseCountOrderByAggregateInput
     _avg?: ExpenseAvgOrderByAggregateInput
     _max?: ExpenseMaxOrderByAggregateInput
@@ -5367,6 +5354,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Expense"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Expense"> | Date | string
     userId?: IntWithAggregatesFilter<"Expense"> | number
+    month?: IntWithAggregatesFilter<"Expense"> | number
   }
 
   export type EXPENSE_TYPEWhereInput = {
@@ -5413,18 +5401,14 @@ export namespace Prisma {
     OR?: BudgetWhereInput[]
     NOT?: BudgetWhereInput | BudgetWhereInput[]
     id?: IntFilter<"Budget"> | number
-    totalSpent?: IntFilter<"Budget"> | number
     targetAmount?: IntFilter<"Budget"> | number
-    amountLeft?: IntFilter<"Budget"> | number
     userId?: IntFilter<"Budget"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type BudgetOrderByWithRelationInput = {
     id?: SortOrder
-    totalSpent?: SortOrder
     targetAmount?: SortOrder
-    amountLeft?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -5435,17 +5419,13 @@ export namespace Prisma {
     AND?: BudgetWhereInput | BudgetWhereInput[]
     OR?: BudgetWhereInput[]
     NOT?: BudgetWhereInput | BudgetWhereInput[]
-    totalSpent?: IntFilter<"Budget"> | number
     targetAmount?: IntFilter<"Budget"> | number
-    amountLeft?: IntFilter<"Budget"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "userId">
 
   export type BudgetOrderByWithAggregationInput = {
     id?: SortOrder
-    totalSpent?: SortOrder
     targetAmount?: SortOrder
-    amountLeft?: SortOrder
     userId?: SortOrder
     _count?: BudgetCountOrderByAggregateInput
     _avg?: BudgetAvgOrderByAggregateInput
@@ -5459,9 +5439,7 @@ export namespace Prisma {
     OR?: BudgetScalarWhereWithAggregatesInput[]
     NOT?: BudgetScalarWhereWithAggregatesInput | BudgetScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Budget"> | number
-    totalSpent?: IntWithAggregatesFilter<"Budget"> | number
     targetAmount?: IntWithAggregatesFilter<"Budget"> | number
-    amountLeft?: IntWithAggregatesFilter<"Budget"> | number
     userId?: IntWithAggregatesFilter<"Budget"> | number
   }
 
@@ -5536,6 +5514,7 @@ export namespace Prisma {
   export type ExpenseCreateInput = {
     title: string
     createdAt?: Date | string
+    month: number
     user: UserCreateNestedOneWithoutExpensesInput
   }
 
@@ -5544,11 +5523,13 @@ export namespace Prisma {
     title: string
     createdAt?: Date | string
     userId: number
+    month: number
   }
 
   export type ExpenseUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    month?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutExpensesNestedInput
   }
 
@@ -5557,6 +5538,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
   }
 
   export type ExpenseCreateManyInput = {
@@ -5564,11 +5546,13 @@ export namespace Prisma {
     title: string
     createdAt?: Date | string
     userId: number
+    month: number
   }
 
   export type ExpenseUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    month?: IntFieldUpdateOperationsInput | number
   }
 
   export type ExpenseUncheckedUpdateManyInput = {
@@ -5576,6 +5560,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
   }
 
   export type EXPENSE_TYPECreateInput = {
@@ -5611,54 +5596,40 @@ export namespace Prisma {
   }
 
   export type BudgetCreateInput = {
-    totalSpent?: number
     targetAmount?: number
-    amountLeft?: number
     user: UserCreateNestedOneWithoutBudgetInput
   }
 
   export type BudgetUncheckedCreateInput = {
     id?: number
-    totalSpent?: number
     targetAmount?: number
-    amountLeft?: number
     userId: number
   }
 
   export type BudgetUpdateInput = {
-    totalSpent?: IntFieldUpdateOperationsInput | number
     targetAmount?: IntFieldUpdateOperationsInput | number
-    amountLeft?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutBudgetNestedInput
   }
 
   export type BudgetUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    totalSpent?: IntFieldUpdateOperationsInput | number
     targetAmount?: IntFieldUpdateOperationsInput | number
-    amountLeft?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type BudgetCreateManyInput = {
     id?: number
-    totalSpent?: number
     targetAmount?: number
-    amountLeft?: number
     userId: number
   }
 
   export type BudgetUpdateManyMutationInput = {
-    totalSpent?: IntFieldUpdateOperationsInput | number
     targetAmount?: IntFieldUpdateOperationsInput | number
-    amountLeft?: IntFieldUpdateOperationsInput | number
   }
 
   export type BudgetUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    totalSpent?: IntFieldUpdateOperationsInput | number
     targetAmount?: IntFieldUpdateOperationsInput | number
-    amountLeft?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -5844,11 +5815,13 @@ export namespace Prisma {
     title?: SortOrder
     createdAt?: SortOrder
     userId?: SortOrder
+    month?: SortOrder
   }
 
   export type ExpenseAvgOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    month?: SortOrder
   }
 
   export type ExpenseMaxOrderByAggregateInput = {
@@ -5856,6 +5829,7 @@ export namespace Prisma {
     title?: SortOrder
     createdAt?: SortOrder
     userId?: SortOrder
+    month?: SortOrder
   }
 
   export type ExpenseMinOrderByAggregateInput = {
@@ -5863,11 +5837,13 @@ export namespace Prisma {
     title?: SortOrder
     createdAt?: SortOrder
     userId?: SortOrder
+    month?: SortOrder
   }
 
   export type ExpenseSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    month?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -5909,41 +5885,31 @@ export namespace Prisma {
 
   export type BudgetCountOrderByAggregateInput = {
     id?: SortOrder
-    totalSpent?: SortOrder
     targetAmount?: SortOrder
-    amountLeft?: SortOrder
     userId?: SortOrder
   }
 
   export type BudgetAvgOrderByAggregateInput = {
     id?: SortOrder
-    totalSpent?: SortOrder
     targetAmount?: SortOrder
-    amountLeft?: SortOrder
     userId?: SortOrder
   }
 
   export type BudgetMaxOrderByAggregateInput = {
     id?: SortOrder
-    totalSpent?: SortOrder
     targetAmount?: SortOrder
-    amountLeft?: SortOrder
     userId?: SortOrder
   }
 
   export type BudgetMinOrderByAggregateInput = {
     id?: SortOrder
-    totalSpent?: SortOrder
     targetAmount?: SortOrder
-    amountLeft?: SortOrder
     userId?: SortOrder
   }
 
   export type BudgetSumOrderByAggregateInput = {
     id?: SortOrder
-    totalSpent?: SortOrder
     targetAmount?: SortOrder
-    amountLeft?: SortOrder
     userId?: SortOrder
   }
 
@@ -6225,12 +6191,14 @@ export namespace Prisma {
   export type ExpenseCreateWithoutUserInput = {
     title: string
     createdAt?: Date | string
+    month: number
   }
 
   export type ExpenseUncheckedCreateWithoutUserInput = {
     id?: number
     title: string
     createdAt?: Date | string
+    month: number
   }
 
   export type ExpenseCreateOrConnectWithoutUserInput = {
@@ -6244,16 +6212,12 @@ export namespace Prisma {
   }
 
   export type BudgetCreateWithoutUserInput = {
-    totalSpent?: number
     targetAmount?: number
-    amountLeft?: number
   }
 
   export type BudgetUncheckedCreateWithoutUserInput = {
     id?: number
-    totalSpent?: number
     targetAmount?: number
-    amountLeft?: number
   }
 
   export type BudgetCreateOrConnectWithoutUserInput = {
@@ -6285,6 +6249,7 @@ export namespace Prisma {
     title?: StringFilter<"Expense"> | string
     createdAt?: DateTimeFilter<"Expense"> | Date | string
     userId?: IntFilter<"Expense"> | number
+    month?: IntFilter<"Expense"> | number
   }
 
   export type BudgetUpsertWithoutUserInput = {
@@ -6299,16 +6264,12 @@ export namespace Prisma {
   }
 
   export type BudgetUpdateWithoutUserInput = {
-    totalSpent?: IntFieldUpdateOperationsInput | number
     targetAmount?: IntFieldUpdateOperationsInput | number
-    amountLeft?: IntFieldUpdateOperationsInput | number
   }
 
   export type BudgetUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    totalSpent?: IntFieldUpdateOperationsInput | number
     targetAmount?: IntFieldUpdateOperationsInput | number
-    amountLeft?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserCreateWithoutExpensesInput = {
@@ -6423,23 +6384,27 @@ export namespace Prisma {
     id?: number
     title: string
     createdAt?: Date | string
+    month: number
   }
 
   export type ExpenseUpdateWithoutUserInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    month?: IntFieldUpdateOperationsInput | number
   }
 
   export type ExpenseUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    month?: IntFieldUpdateOperationsInput | number
   }
 
   export type ExpenseUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    month?: IntFieldUpdateOperationsInput | number
   }
 
 

@@ -50,8 +50,26 @@ export async function POST(req: NextRequest) {
 
     const token = await createJwtToken(user.id, user.name);
 
+    // Check: First time login -> Create Budget Data
+    const budgetExist = await prisma.budget.findUnique({
+      where: {
+        userId: user.id,
+      },
+    });
+    console.log(budgetExist);
+    
+    let exists = true;
+    if (!budgetExist) {
+      exists = false;
+      await prisma.budget.create({
+        data: {
+          userId: user.id,
+        },
+      });
+    }
+
     const res = NextResponse.json(
-      { message: "Login successful", success: true },
+      { message: "Login successful", success: true, data: exists },
       { status: 200 }
     );
     res.cookies.set("token", token);

@@ -16,7 +16,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { signupSchema } from "@/schema/signupSchema";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -43,7 +42,8 @@ export default function SignUp() {
       .post("/api/login", data)
       .then((res: AxiosResponse) => {
         toast.success(res.data.message, { duration: 6000 });
-        router.push("/user/dashboard");
+        const exists = res.data.data;
+        router.push(exists ? "/user/dashboard" : "/user/budget");
       })
       .catch((err: AxiosError) => {
         console.log(err);

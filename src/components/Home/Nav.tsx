@@ -64,7 +64,7 @@ const Nav = () => {
           <NavbarContent className="hidden sm:flex gap-4" justify="center">
             <NavbarItem>
               <Link href="/about">
-                <Button variant="link" className="text-white">
+                <Button variant="link">
                   About
                 </Button>
               </Link>

@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyJwtToken } from "@/utils/jwtToken";
 
 export async function middleware(req: NextRequest) {
+  console.log(req.method);
   const token = req.cookies?.get("token");
   const verified = await verifyJwtToken(token?.value || "");
-  console.log(req.method);
 
   if (req.nextUrl.pathname.startsWith("/user/")) {
     if (!verified) {
@@ -18,5 +18,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/login", "/signup", "/user/dashboard"],
+  matcher: ["/", "/login", "/signup", "/user/dashboard", "/user/budget"],
 };

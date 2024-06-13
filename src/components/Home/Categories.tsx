@@ -9,7 +9,7 @@ const cardVariants: Variants = {
     y: 150,
   },
   onscreen: {
-    y: -50,
+    y: -100,
     rotate: 0,
     transition: {
       type: "spring",
