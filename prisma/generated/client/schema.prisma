@@ -27,12 +27,14 @@ model User {
 }
 
 model Expense {
-  id        Int      @id @default(autoincrement())
-  title     String
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
-  userId    Int      @unique
-  month     Int
+  id          Int      @id @default(autoincrement())
+  title       String
+  amount      Int
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      Int      @unique
+  month       Int
+  expenseType Int
 }
 
 model EXPENSE_TYPE {
@@ -41,8 +43,10 @@ model EXPENSE_TYPE {
 }
 
 model Budget {
-  id           Int  @id @default(autoincrement())
-  targetAmount Int  @default(10000)
-  user         User @relation(fields: [userId], references: [id])
-  userId       Int  @unique
+  id               Int  @id @default(autoincrement())
+  spendingAmount   Int  @default(10000)
+  investmentAmount Int  @default(10000)
+  totalIncome      Int  @default(20000)
+  user             User @relation(fields: [userId], references: [id])
+  userId           Int  @unique
 }

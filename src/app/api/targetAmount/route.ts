@@ -15,23 +15,21 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { targetAmount } = body;
+    const { spendingAmount, investmentAmount, totalIncome } = body;
     const token = req.cookies.get("token")?.value;
     const payload = await verifyJwtToken(token);
     const { userId } = payload?.payload;
-    console.log(userId, targetAmount);
-    
 
     const data = await prisma.budget.update({
       where: {
         userId: userId,
       },
       data: {
-        targetAmount: targetAmount,
+        spendingAmount: spendingAmount,
+        investmentAmount: investmentAmount,
+        totalIncome: totalIncome,
       },
     });
-    console.log(data);
-    
 
     return NextResponse.json(
       { message: "Budget Target Added", success: true },

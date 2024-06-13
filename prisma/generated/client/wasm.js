@@ -131,9 +131,11 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.ExpenseScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  amount: 'amount',
   createdAt: 'createdAt',
   userId: 'userId',
-  month: 'month'
+  month: 'month',
+  expenseType: 'expenseType'
 };
 
 exports.Prisma.EXPENSE_TYPEScalarFieldEnum = {
@@ -143,7 +145,9 @@ exports.Prisma.EXPENSE_TYPEScalarFieldEnum = {
 
 exports.Prisma.BudgetScalarFieldEnum = {
   id: 'id',
-  targetAmount: 'targetAmount',
+  spendingAmount: 'spendingAmount',
+  investmentAmount: 'investmentAmount',
+  totalIncome: 'totalIncome',
   userId: 'userId'
 };
 

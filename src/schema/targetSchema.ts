@@ -1,5 +1,8 @@
 import { z } from "zod";
 
 export const targetSchema = z.object({
-  targetAmount: z.coerce.number().min(1),
+  spendingAmount: z.coerce.number().min(1),
+  investmentAmount: z.coerce.number().min(1),
+  totalIncome: z.coerce.number().min(1),
+  
 });

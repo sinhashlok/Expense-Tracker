@@ -4,6 +4,8 @@ CREATE TABLE "User" (
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "isVerified" BOOLEAN NOT NULL DEFAULT false,
+    "verifyToken" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -14,6 +16,8 @@ CREATE TABLE "Expense" (
     "title" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "userId" INTEGER NOT NULL,
+    "month" INTEGER NOT NULL,
+    "expenseType" TEXT NOT NULL,
 
     CONSTRAINT "Expense_pkey" PRIMARY KEY ("id")
 );
@@ -29,9 +33,7 @@ CREATE TABLE "EXPENSE_TYPE" (
 -- CreateTable
 CREATE TABLE "Budget" (
     "id" SERIAL NOT NULL,
-    "totalSpent" INTEGER NOT NULL DEFAULT 0,
     "targetAmount" INTEGER NOT NULL DEFAULT 10000,
-    "amountLeft" INTEGER NOT NULL DEFAULT 10000,
     "userId" INTEGER NOT NULL,
 
     CONSTRAINT "Budget_pkey" PRIMARY KEY ("id")
@@ -39,6 +41,9 @@ CREATE TABLE "Budget" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_verifyToken_key" ON "User"("verifyToken");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Expense_userId_key" ON "Expense"("userId");

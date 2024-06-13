@@ -16,12 +16,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Nav from "@/components/Home/Nav";
-import Footer from "@/components/Footer";
 import { targetSchema } from "@/schema/targetSchema";
 
 export default function Budget() {
@@ -30,14 +27,16 @@ export default function Budget() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      targetAmount: 10000,
+      spendingAmount: 10000,
+      investmentAmount: 10000,
+      totalIncome: 20000
     },
   });
   const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(data);
-    
+
     setBtnDisabled(true);
     const res = await axios
       .post("/api/targetAmount", data)
@@ -56,49 +55,69 @@ export default function Budget() {
   }
 
   return (
-    <div>
-      <div className="bg-[url('/assets/authenticate/authImg.jpeg')] h-screen">
-        <nav>
-          <Nav />
-        </nav>
-        <div className="bg-white mt-16 md:mt-44 lg:mt-20 lg:w-[30%] mx-auto rounded-lg p-6 px-12">
-          <h1 className="text-2xl mb-6 text-center">Budget</h1>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="w-[100%] space-y-6"
-            >
-              <FormField
-                control={form.control}
-                name="targetAmount"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Target Amount</FormLabel>
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      Enter the amount over which you not spend
-                    </FormDescription>
-                  </FormItem>
-                )}
-              />
-              {btnDisabled ? (
-                <Button disabled className="w-full">
-                  <Loader2 className="mr-2 h-4 w- animate-spin" />
-                  Please wait
-                </Button>
-              ) : (
-                <Button type="submit" variant="outline" className="w-full">
-                  Submit
-                </Button>
+    <div className="bg-[url('/assets/authenticate/authImg.jpeg')] h-screen pt-20">
+      <Toaster />
+      <div className="bg-white w-[90%] md:w-[50%] lg:w-[30%] mx-auto rounded-lg p-6 px-12">
+        <h1 className="text-2xl mb-6 text-center">Budget</h1>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="w-[100%] space-y-6"
+          >
+            <FormField
+              control={form.control}
+              name="spendingAmount"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Expenses Target Amount</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    Enter the amount over which you not spend
+                  </FormDescription>
+                </FormItem>
               )}
-            </form>
-          </Form>
-        </div>
-        <div className="w-full absolute bottom-0">
-          <Footer />
-        </div>
+            />
+            <FormField
+              control={form.control}
+              name="investmentAmount"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Investment Target Amount</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    Enter the amount over which wish to investment
+                  </FormDescription>
+                </FormItem>
+              )}
+            />
+             <FormField
+              control={form.control}
+              name="totalIncome"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Total Income</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            {btnDisabled ? (
+              <Button disabled className="w-full">
+                <Loader2 className="mr-2 h-4 w- animate-spin" />
+                Please wait
+              </Button>
+            ) : (
+              <Button type="submit" variant="outline" className="w-full">
+                Submit
+              </Button>
+            )}
+          </form>
+        </Form>
       </div>
     </div>
   );
