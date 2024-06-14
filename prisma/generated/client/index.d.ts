@@ -5395,17 +5395,17 @@ export namespace Prisma {
 
   export type ExpenseWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    userId?: number
     AND?: ExpenseWhereInput | ExpenseWhereInput[]
     OR?: ExpenseWhereInput[]
     NOT?: ExpenseWhereInput | ExpenseWhereInput[]
     title?: StringFilter<"Expense"> | string
     amount?: IntFilter<"Expense"> | number
     createdAt?: DateTimeFilter<"Expense"> | Date | string
+    userId?: IntFilter<"Expense"> | number
     month?: IntFilter<"Expense"> | number
     expenseType?: IntFilter<"Expense"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
-  }, "id" | "userId">
+  }, "id">
 
   export type ExpenseOrderByWithAggregationInput = {
     id?: SortOrder

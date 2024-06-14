@@ -1,12 +1,12 @@
 import Welcome from "@/components/Dashboard/Welcome";
-import ProgressSection from "@/components/Dashboard/ProgressSection"
+import ProgressSection from "@/components/Dashboard/ProgressSection";
 import { cookies } from "next/headers";
 import { UserData } from "@/schema/dbScehma";
 
 async function getUserData() {
   const cookie = cookies().toString();
   const res = await fetch(`${process.env.DOMAIN}/api/user/getUserData`, {
-    next: { revalidate: 0 },
+    next: { tags: ["dashboard"] },
     headers: { Cookie: cookie },
   })
     .then(async (res: any) => {
@@ -26,7 +26,7 @@ export default async function page() {
   return (
     <div>
       <Welcome name={name} />
-      <ProgressSection expenses={expenses} budget={budget}/>
+      <ProgressSection expenses={expenses} budget={budget} />
     </div>
   );
 }

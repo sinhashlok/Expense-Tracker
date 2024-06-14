@@ -57,7 +57,7 @@ export default async function ProgressSection({
 
   return (
     <div className="flex flex-row flex-wrap justify-between  mx-auto">
-      <Card className="w-80 h-[170px] lg:w-96 p-2 lg:p-4 rounded-2xl border-2 border-black">
+      <Card className="w-80 h-[170px] lg:w-96 p-2 lg:p-4 rounded-lg border-2 border-black/80">
         <CardHeader className="font-bold">Expenses</CardHeader>
         <CardBody className="text-2xl pb-0">₹ {totalExpense}</CardBody>
         <CardFooter className="justify-between">
@@ -67,7 +67,7 @@ export default async function ProgressSection({
           </span>
         </CardFooter>
       </Card>
-      <Card className="mt-5 mb-5 h-[170px] md:mt-0 w-80 lg:w-96 p-2 lg:p-4 rounded-2xl border-2 border-black">
+      <Card className="mt-5 mb-5 h-[170px] md:mt-0 w-80 lg:w-96 p-2 lg:p-4 rounded-lg border-2 border-black/80">
         <CardHeader className="font-bold">Investments & Learning</CardHeader>
         <CardBody className="text-2xl pb-0">₹ {totalInvestment}</CardBody>
         <CardFooter className="justify-between">
@@ -77,7 +77,7 @@ export default async function ProgressSection({
           </span>
         </CardFooter>
       </Card>
-      <Card className="mt-5 lg:mt-0 h-[170px] w-80 lg:w-96 p-2 lg:p-4 rounded-2xl border-2 border-black">
+      <Card className="mt-5 lg:mt-0 h-[170px] w-80 lg:w-96 p-2 lg:p-4 rounded-lg border-2 border-black/80">
         <CardHeader className="font-bold">Total Savings</CardHeader>
         <CardBody className="text-2xl pb-0">
           ₹ {budget?.totalIncome - (totalInvestment + totalExpense)}
