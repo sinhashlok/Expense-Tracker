@@ -58,9 +58,9 @@ export default function ProgressSection({
   } = getAllData({ expenses, budget });
 
   return (
-    <div className="flex flex-row flex-wrap justify-between">
+    <div className="flex flex-row flex-wrap justify-between mb-10">
       <motion.div
-        className="mx-auto"
+        className="mx-auto md:mx-0"
         initial={{ y: "3vh", opacity: "0" }}
         animate={{ y: "0vh", opacity: "1" }}
         transition={{ duration: 0.2 }}
@@ -82,7 +82,7 @@ export default function ProgressSection({
         </Card>
       </motion.div>
       <motion.div
-        className="mx-auto"
+        className="mx-auto md:mx-0"
         initial={{ y: "3vh", opacity: "0" }}
         animate={{ y: "0vh", opacity: "1" }}
         transition={{ delay: 0.2, duration: 0.2 }}
@@ -104,7 +104,7 @@ export default function ProgressSection({
         </Card>
       </motion.div>
       <motion.div
-        className="mx-auto"
+        className="mx-auto md:mx-0"
         initial={{ y: "3vh", opacity: "0" }}
         animate={{ y: "0vh", opacity: "1" }}
         transition={{ delay: 0.4, duration: 0.2 }}

@@ -58,11 +58,11 @@ export function AddExpense() {
 
     await axios
       .post(
-        "/api/addExpense",
+        "/api/user/addExpense",
         JSON.stringify({ title, amount, expenseType, createdAt })
       )
       .then(async (res: AxiosResponse) => {
-        toast.success(res.data.message + "\nVerify your email.", {
+        toast.success("Expense Added", {
           duration: 6000,
         });
         await action();

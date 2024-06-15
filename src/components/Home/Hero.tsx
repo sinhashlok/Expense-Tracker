@@ -1,5 +1,7 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -15,7 +17,11 @@ const Hero = () => {
           Get Started
         </Button>
       </div>
-      <div className="hidden sm:flex">
+      <motion.div
+        className="hidden sm:flex"
+        initial={{ x: "100vw", opacity: "0" }}
+        animate={{ x: "0", opacity: "1" }}
+      >
         <Image
           priority
           src="/assets/home/hero-section-piggy-bank.jpeg"
@@ -23,7 +29,7 @@ const Hero = () => {
           height="100"
           alt="hero"
         />
-      </div>
+      </motion.div>
     </div>
   );
 };
