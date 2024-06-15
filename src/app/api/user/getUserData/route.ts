@@ -15,6 +15,12 @@ export async function GET(req: NextRequest) {
         id: true,
         name: true,
         expenses: {
+          orderBy: {
+            createdAt: "asc",
+          },
+          where: {
+            month: new Date().getMonth(),
+          },
           select: {
             id: true,
             title: true,

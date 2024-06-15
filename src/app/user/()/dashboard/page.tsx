@@ -2,6 +2,7 @@ import Welcome from "@/components/Dashboard/Welcome";
 import ProgressSection from "@/components/Dashboard/ProgressSection";
 import { cookies } from "next/headers";
 import { UserData } from "@/schema/dbScehma";
+import ExpenseTable from "@/components/Dashboard/ExpenseTable";
 
 async function getUserData() {
   const cookie = cookies().toString();
@@ -27,6 +28,7 @@ export default async function page() {
     <div>
       <Welcome name={name} />
       <ProgressSection expenses={expenses} budget={budget} />
+      <ExpenseTable expenses={expenses}/>
     </div>
   );
 }

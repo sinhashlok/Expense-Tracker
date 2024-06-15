@@ -20,6 +20,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { CalendarIcon } from "lucide-react";
 import { EXPENSE_TABLE } from "@/utils/data";
 import { Input } from "../ui/input";
 import { addExpenseSchema } from "@/schema/addExpenseSchema";
@@ -28,6 +35,8 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import action from "@/app/action";
+import { cn } from "@/lib/utils";
+import { format } from "util";
 
 const FormSchema = addExpenseSchema;
 
@@ -35,6 +44,9 @@ export function AddExpense() {
   const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    defaultValues: {
+      createdAt: new Date(),
+    },
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -42,9 +54,13 @@ export function AddExpense() {
     const title = data.title;
     const amount = data.amount;
     const expenseType = parseInt(data.expneseType, 10);
+    const createdAt = data.createdAt.toString();
 
     await axios
-      .post("/api/addExpense", JSON.stringify({ title, amount, expenseType }))
+      .post(
+        "/api/addExpense",
+        JSON.stringify({ title, amount, expenseType, createdAt })
+      )
       .then(async (res: AxiosResponse) => {
         toast.success(res.data.message + "\nVerify your email.", {
           duration: 6000,
@@ -109,6 +125,53 @@ export function AddExpense() {
                   ))}
                 </SelectContent>
               </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="createdAt"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel>Date of birth</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-[240px] pl-3 text-left font-normal",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value ? (
+                        format(
+                          field.value.getDate() +
+                            "/" +
+                            field.value.getDay() +
+                            "/" +
+                            field.value.getFullYear()
+                        )
+                      ) : (
+                        <span>Pick a date</span>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    disabled={(date) =>
+                      date > new Date() || date < new Date("1900-01-01")
+                    }
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
               <FormMessage />
             </FormItem>
           )}

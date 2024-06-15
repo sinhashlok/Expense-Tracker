@@ -55,5 +55,20 @@ export const FEATURED_DATA = [
 export const SOCIAL_LINK = {
   twitter: "https://x.com/SinhaShlok12",
   instagram: "https://www.instagram.com/shloksinha12/",
-  github: "https://github.com/sinhashlok/Expense-Tracker"
+  github: "https://github.com/sinhashlok/Expense-Tracker",
 };
+
+export const MONTHS: string[] = [
+  "Jan",
+  "Feb",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+];

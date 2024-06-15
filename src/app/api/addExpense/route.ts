@@ -15,10 +15,23 @@ export async function POST(req: NextRequest) {
     // }
 
     const body = await req.json();
-    const { title, amount, expenseType } = body;
+    const {
+      title,
+      amount,
+      expenseType,
+      createdAt,
+    }: {
+      title: string;
+      amount: number;
+      expenseType: number;
+      createdAt: string;
+    } = body;
     const token = req.cookies.get("token")?.value;
     const payload = await verifyJwtToken(token);
     const { userId } = payload?.payload;
+    const date = new Date(createdAt);
+    const month = date.getMonth();
+    console.log(date, month);
 
     await prisma.expense.create({
       data: {
@@ -26,7 +39,8 @@ export async function POST(req: NextRequest) {
         title: title,
         amount: amount,
         expenseType: expenseType,
-        month: new Date().getMonth(),
+        month: month,
+        createdAt: date,
       },
     });
 

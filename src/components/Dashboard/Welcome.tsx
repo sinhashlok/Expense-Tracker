@@ -7,11 +7,22 @@ import {
 } from "@/components/ui/popover";
 import { useState } from "react";
 import { AddExpense } from "./AddExpense";
+import { motion } from "framer-motion";
 
 const Welcome = ({ name }: { name: string }) => {
   const [expense, setExpense] = useState<boolean>(false);
   return (
     <div className="mb-10">
+      <motion.div
+        className="hidden md:flex bg-white h-10 w-44 absolute"
+        initial={{ x: "0" }}
+        animate={{
+          x: "176px",
+          transition: {
+            duration: 1.5,
+          },
+        }}
+      />
       <div className="flex flex-row justify-between">
         <div className="flex flex-col">
           <h1 className="text-lg md:text-2xl font-semibold">Hi, {name}</h1>
