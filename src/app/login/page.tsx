@@ -24,7 +24,7 @@ import Nav from "@/components/Home/Nav";
 import Footer from "@/components/Footer";
 import { loginSchema } from "@/schema/loginSchema";
 
-export default function SignUp() {
+export default function Login() {
   const FormSchema = loginSchema;
   const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({

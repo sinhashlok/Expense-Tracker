@@ -5,7 +5,6 @@ async function main() {
   const expenseTable = await prisma.eXPENSE_TYPE.createMany({
     data: EXPENSE_TABLE,
   });
-  console.log(expenseTable);
 }
 
 main()

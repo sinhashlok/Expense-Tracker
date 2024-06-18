@@ -56,7 +56,6 @@ export async function POST(req: NextRequest) {
         userId: user.id,
       },
     });
-    console.log(budgetExist);
     
     let exists = true;
     if (!budgetExist) {

@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { UserData } from "@/schema/dbScehma";
 import { DataTable } from "@/components/Dashboard/ExpenseTable";
 import { columns } from "@/components/Dashboard/columns";
+import Charts from "@/components/Dashboard/Charts";
 
 async function getUserData() {
   const cookie = cookies().toString();
@@ -41,7 +42,7 @@ export default async function page() {
     <div>
       <Welcome name={name} />
       <ProgressSection expenses={expenses} budget={budget} />
-      {/* <ExpenseTable expenses={expenses}/> */}
+      <Charts expenses={expenses} budget={budget} />
       <DataTable columns={columns} data={data} />
     </div>
   );

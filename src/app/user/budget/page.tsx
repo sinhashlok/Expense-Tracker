@@ -29,20 +29,16 @@ export default function Budget() {
     defaultValues: {
       spendingAmount: 10000,
       investmentAmount: 10000,
-      totalIncome: 20000
+      totalIncome: 20000,
     },
   });
   const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
-
     setBtnDisabled(true);
     const res = await axios
-      .post("/api/targetAmount", data)
+      .post("/api/user/targetAmount", data)
       .then((res: AxiosResponse) => {
-        console.log(res.data);
-
         toast.success(res.data.message, { duration: 6000 });
         router.push("/user/dashboard");
       })
@@ -94,7 +90,7 @@ export default function Budget() {
                 </FormItem>
               )}
             />
-             <FormField
+            <FormField
               control={form.control}
               name="totalIncome"
               render={({ field }) => (

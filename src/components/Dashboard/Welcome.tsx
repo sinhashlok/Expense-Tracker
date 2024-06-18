@@ -28,7 +28,7 @@ const Welcome = ({ name }: { name: string }) => {
           <h1 className="text-lg md:text-2xl font-semibold">Hi, {name}</h1>
           <p className="text-sm md:text-lg">Here is your Report</p>
         </div>
-        <div className="h-fit p-2 border-2 border-black/80 rounded-md text-black">
+        <div className="h-fit p-2 bg-slate-900 rounded-md text-white">
           <Popover>
             <PopoverTrigger className="flex">
               <CirclePlus className="mr-2" /> Add Expense

@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import axios, { AxiosError, AxiosResponse } from "axios";
 import action from "@/app/action";
 import toast from "react-hot-toast";
@@ -29,7 +30,6 @@ const handleDelete = async (id: string) => {
       toast.error(data?.message), { duration: 6000 };
     });
 };
-
 export type Payment = {
   id: string;
   title: string;
@@ -79,11 +79,13 @@ export const columns: ColumnDef<Payment>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+            {/* <DropdownMenuItem
+              onClick={(e) => {
+                window.location.replace("/user/dashboard/editExpense");
+              }}
             >
               Edit Expense
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
             <DropdownMenuItem onClick={() => handleDelete(payment.id)}>
               Delete
             </DropdownMenuItem>
