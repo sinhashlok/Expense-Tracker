@@ -6,18 +6,18 @@ import { SOCIAL_LINK } from "@/utils/data";
 
 const Footer = () => {
   return (
-    <div className="border-t-2 p-10 bg-white">
-      <div className="flex flex-row justify-center">
+    <div className="p-5 bg-white">
+      <div className="flex flex-row justify-center space-x-10">
         <div className="flex flex-col mr-20 md:mr-44 items-center">
           <h1 className="font-bold text-inherit">TRACKER</h1>
           <Link href={SOCIAL_LINK.twitter} target="_blank">
-            <XIcon fontSize="large" className="mt-4 cursor-pointer" />
+            <XIcon fontSize="small" className="mt-4 cursor-pointer" />
           </Link>
           <Link href={SOCIAL_LINK.instagram} target="_blank">
-            <InstagramIcon fontSize="large" className="mt-4 cursor-pointer" />
+            <InstagramIcon fontSize="small" className="mt-4 cursor-pointer" />
           </Link>
         </div>
-        <div className="text-xl font-light flex flex-col">
+        <div className="text-sm font-medium flex flex-col">
           <Link href="/about" className="mb-4 hover:underline">
             About me
           </Link>

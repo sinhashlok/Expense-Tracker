@@ -55,12 +55,12 @@ export default function Login() {
 
   return (
     <div>
-      <div className="bg-[url('/assets/authenticate/authImg.jpeg')] h-screen lg:pb-14">
+      <div className="bg-[url('/assets/authenticate/authImg.jpeg')] h-screen w-screen lg:pb-14">
         <Toaster />
         <nav>
           <Nav />
         </nav>
-        <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center px-6 lg:px-44">
+        <div className="grid grid-cols-1 md:grid-cols-2 px-6 lg:px-44">
           <div className="hidden md:flex">
             <div className="flex flex-col justify-center text-white">
               <h1 className="text-5xl md:text-3xl lg:text-6xl mb-8 font-light">
@@ -71,7 +71,7 @@ export default function Login() {
               </p>
             </div>
           </div>
-          <div className="bg-white mt-16 md:mt-44 lg:mt-20 mb-16 md:mb-20 lg:mb-12 lg:w-[65%] lg:ml-auto rounded-lg p-6 px-12 hover:scale-110 hover:shadow-black hover:shadow-2xl transition-all">
+          <div className="bg-white mt-16 md:mt-44 lg:mt-20 mb-16 md:mb-20 lg:mb-12 lg:w-[65%] lg:ml-auto rounded-lg p-6 px-12">
             <h1 className="text-2xl mb-6 text-center">Log in</h1>
             <Form {...form}>
               <form

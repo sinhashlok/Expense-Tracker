@@ -65,7 +65,7 @@ export default function ProgressSection({
         animate={{ y: "0vh", opacity: "1" }}
         transition={{ duration: 0.2 }}
       >
-        <Card className="w-80 h-[170px] lg:w-96 p-2 lg:p-4 rounded-lg border-2 border-slate-200">
+        <Card className="w-80 h-[170px] lg:w-96 p-2 lg:p-4 rounded-lg border-2 border-slate-300 hover:scale-[115%] hover:shadow-xl transition-all ease-in">
           <CardHeader className="font-bold">Expenses</CardHeader>
           <CardBody className="text-2xl pb-0">
             <div>
@@ -87,7 +87,7 @@ export default function ProgressSection({
         animate={{ y: "0vh", opacity: "1" }}
         transition={{ delay: 0.2, duration: 0.2 }}
       >
-        <Card className="mt-5 mb-5 h-[170px] md:mt-0 w-80 lg:w-96 p-2 lg:p-4 rounded-lg border-2 border-slate-200">
+        <Card className="mt-5 mb-5 h-[170px] md:mt-0 w-80 lg:w-96 p-2 lg:p-4 rounded-lg border-2 border-slate-300 hover:scale-[115%] hover:shadow-xl transition-all ease-in">
           <CardHeader className="font-bold">Investments & Learning</CardHeader>
           <CardBody className="text-2xl pb-0">
             <div>
@@ -109,7 +109,7 @@ export default function ProgressSection({
         animate={{ y: "0vh", opacity: "1" }}
         transition={{ delay: 0.4, duration: 0.2 }}
       >
-        <Card className="lg:mt-0 h-[170px] w-80 lg:w-96 p-2 lg:p-4 rounded-lg border-2 border-slate-200">
+        <Card className="lg:mt-0 h-[170px] w-80 lg:w-96 p-2 lg:p-4 rounded-lg border-2 border-slate-300 hover:scale-[115%] hover:shadow-xl transition-all ease-in">
           <CardHeader className="font-bold">Total Savings</CardHeader>
           <CardBody className="text-2xl pb-0">
             <div>

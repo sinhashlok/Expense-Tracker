@@ -73,7 +73,7 @@ export default function SignUp() {
               </p>
             </div>
           </div>
-          <div className="bg-white mt-16 md:mt-44 lg:mt-20 mb-16 md:mb-20 lg:mb-12 lg:w-[65%] lg:ml-auto rounded-lg p-6 px-12 hover:scale-110 hover:shadow-black hover:shadow-2xl transition-all">
+          <div className="bg-white mt-16 md:mt-44 lg:mt-20 mb-16 md:mb-20 lg:mb-12 lg:w-[65%] lg:ml-auto rounded-lg p-6 px-12">
             <h1 className="text-2xl mb-6 text-center">Sign Up</h1>
             <Form {...form}>
               <form
