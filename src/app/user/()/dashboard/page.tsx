@@ -20,6 +20,8 @@ async function getUserData() {
       console.log(error);
     });
 
+    console.log(res);
+    
   return res;
 }
 

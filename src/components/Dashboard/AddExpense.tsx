@@ -149,7 +149,7 @@ export function AddExpense() {
                         format(
                           field.value.getDate() +
                             "/" +
-                            field.value.getDay() +
+                            field.value.getMonth() +
                             "/" +
                             field.value.getFullYear()
                         )
