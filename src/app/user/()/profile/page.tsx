@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 const Page = () => {
   const [section, setSection] = useState<0 | 1 | 2>(0);
   const [user, setUser] = useState<{name: string, email: string}>();
+  const [expense, setExpense] = useState(null);
   useEffect(() => {
     async function getUserData() {
       await fetch(`/api/user/getUserDetails`, {
@@ -17,7 +18,8 @@ const Page = () => {
       })
         .then(async (res: any) => {
           const data = await res.json();
-          setUser(data.data);
+          setUser(data.data[0]);
+          setExpense(data.data[1]);
         })
         .catch((error: any) => {
           console.log(error);
@@ -52,7 +54,7 @@ const Page = () => {
         <Separator orientation="vertical" />
       </div>
       <div className="w-full p-5">
-        {section === 0 ? <Profile user={user} /> : section === 1 ? <Budget /> : <Delete />}
+        {section === 0 ? <Profile user={user} expense={expense} /> : section === 1 ? <Budget /> : <Delete />}
       </div>
     </div>
   );
