@@ -8,7 +8,7 @@ const Profile = ({
   expense,
 }: {
   user: { name: string; email: string } | undefined;
-  expense: { amount: number; expenseType: number }[];
+  expense: { amount: number; expenseType: number }[] | null;
 }) => {
   let totalExpense = 0;
   let totalInvestment = 0;
