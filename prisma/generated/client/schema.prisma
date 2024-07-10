@@ -24,6 +24,7 @@ model User {
   budget      Budget?
   isVerified  Boolean   @default(false)
   verifyToken String?   @unique
+  deleteToken String?
 }
 
 model Expense {
@@ -31,7 +32,7 @@ model Expense {
   title       String
   amount      Int
   createdAt   DateTime @default(now())
-  user        User     @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      Int
   month       Int
   expenseType Int
@@ -47,6 +48,6 @@ model Budget {
   spendingAmount   Int  @default(10000)
   investmentAmount Int  @default(10000)
   totalIncome      Int  @default(20000)
-  user             User @relation(fields: [userId], references: [id])
+  user             User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId           Int  @unique
 }

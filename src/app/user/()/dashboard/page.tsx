@@ -19,8 +19,6 @@ async function getUserData() {
     .catch((error: any) => {
       console.log(error);
     });
-
-    console.log(res);
     
   return res;
 }

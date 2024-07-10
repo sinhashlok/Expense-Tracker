@@ -25,7 +25,7 @@ export default async function sendEmailVerificationToken({
 
   await resend.emails
     .send({
-      from: "dev.me@resend.dev",
+      from: "expense-tracker@resend.dev",
       to: email,
       subject: "Verification Email",
       html: `<div>

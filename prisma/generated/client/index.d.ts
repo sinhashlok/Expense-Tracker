@@ -1193,6 +1193,7 @@ export namespace Prisma {
     password: string | null
     isVerified: boolean | null
     verifyToken: string | null
+    deleteToken: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1202,6 +1203,7 @@ export namespace Prisma {
     password: string | null
     isVerified: boolean | null
     verifyToken: string | null
+    deleteToken: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1211,6 +1213,7 @@ export namespace Prisma {
     password: number
     isVerified: number
     verifyToken: number
+    deleteToken: number
     _all: number
   }
 
@@ -1230,6 +1233,7 @@ export namespace Prisma {
     password?: true
     isVerified?: true
     verifyToken?: true
+    deleteToken?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1239,6 +1243,7 @@ export namespace Prisma {
     password?: true
     isVerified?: true
     verifyToken?: true
+    deleteToken?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1248,6 +1253,7 @@ export namespace Prisma {
     password?: true
     isVerified?: true
     verifyToken?: true
+    deleteToken?: true
     _all?: true
   }
 
@@ -1344,6 +1350,7 @@ export namespace Prisma {
     password: string
     isVerified: boolean
     verifyToken: string | null
+    deleteToken: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1372,6 +1379,7 @@ export namespace Prisma {
     password?: boolean
     isVerified?: boolean
     verifyToken?: boolean
+    deleteToken?: boolean
     expenses?: boolean | User$expensesArgs<ExtArgs>
     budget?: boolean | User$budgetArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1384,6 +1392,7 @@ export namespace Prisma {
     password?: boolean
     isVerified?: boolean
     verifyToken?: boolean
+    deleteToken?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1393,6 +1402,7 @@ export namespace Prisma {
     password?: boolean
     isVerified?: boolean
     verifyToken?: boolean
+    deleteToken?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1415,6 +1425,7 @@ export namespace Prisma {
       password: string
       isVerified: boolean
       verifyToken: string | null
+      deleteToken: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1843,6 +1854,7 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly isVerified: FieldRef<"User", 'Boolean'>
     readonly verifyToken: FieldRef<"User", 'String'>
+    readonly deleteToken: FieldRef<"User", 'String'>
   }
     
 
@@ -5170,7 +5182,8 @@ export namespace Prisma {
     email: 'email',
     password: 'password',
     isVerified: 'isVerified',
-    verifyToken: 'verifyToken'
+    verifyToken: 'verifyToken',
+    deleteToken: 'deleteToken'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -5313,6 +5326,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     isVerified?: BoolFilter<"User"> | boolean
     verifyToken?: StringNullableFilter<"User"> | string | null
+    deleteToken?: StringNullableFilter<"User"> | string | null
     expenses?: ExpenseListRelationFilter
     budget?: XOR<BudgetNullableRelationFilter, BudgetWhereInput> | null
   }
@@ -5324,6 +5338,7 @@ export namespace Prisma {
     password?: SortOrder
     isVerified?: SortOrder
     verifyToken?: SortOrderInput | SortOrder
+    deleteToken?: SortOrderInput | SortOrder
     expenses?: ExpenseOrderByRelationAggregateInput
     budget?: BudgetOrderByWithRelationInput
   }
@@ -5338,6 +5353,7 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     isVerified?: BoolFilter<"User"> | boolean
+    deleteToken?: StringNullableFilter<"User"> | string | null
     expenses?: ExpenseListRelationFilter
     budget?: XOR<BudgetNullableRelationFilter, BudgetWhereInput> | null
   }, "id" | "email" | "verifyToken">
@@ -5349,6 +5365,7 @@ export namespace Prisma {
     password?: SortOrder
     isVerified?: SortOrder
     verifyToken?: SortOrderInput | SortOrder
+    deleteToken?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -5366,6 +5383,7 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter<"User"> | string
     isVerified?: BoolWithAggregatesFilter<"User"> | boolean
     verifyToken?: StringNullableWithAggregatesFilter<"User"> | string | null
+    deleteToken?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type ExpenseWhereInput = {
@@ -5537,6 +5555,7 @@ export namespace Prisma {
     password: string
     isVerified?: boolean
     verifyToken?: string | null
+    deleteToken?: string | null
     expenses?: ExpenseCreateNestedManyWithoutUserInput
     budget?: BudgetCreateNestedOneWithoutUserInput
   }
@@ -5548,6 +5567,7 @@ export namespace Prisma {
     password: string
     isVerified?: boolean
     verifyToken?: string | null
+    deleteToken?: string | null
     expenses?: ExpenseUncheckedCreateNestedManyWithoutUserInput
     budget?: BudgetUncheckedCreateNestedOneWithoutUserInput
   }
@@ -5558,6 +5578,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifyToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deleteToken?: NullableStringFieldUpdateOperationsInput | string | null
     expenses?: ExpenseUpdateManyWithoutUserNestedInput
     budget?: BudgetUpdateOneWithoutUserNestedInput
   }
@@ -5569,6 +5590,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifyToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deleteToken?: NullableStringFieldUpdateOperationsInput | string | null
     expenses?: ExpenseUncheckedUpdateManyWithoutUserNestedInput
     budget?: BudgetUncheckedUpdateOneWithoutUserNestedInput
   }
@@ -5580,6 +5602,7 @@ export namespace Prisma {
     password: string
     isVerified?: boolean
     verifyToken?: string | null
+    deleteToken?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -5588,6 +5611,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifyToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deleteToken?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -5597,6 +5621,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifyToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deleteToken?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ExpenseCreateInput = {
@@ -5822,6 +5847,7 @@ export namespace Prisma {
     password?: SortOrder
     isVerified?: SortOrder
     verifyToken?: SortOrder
+    deleteToken?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -5835,6 +5861,7 @@ export namespace Prisma {
     password?: SortOrder
     isVerified?: SortOrder
     verifyToken?: SortOrder
+    deleteToken?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -5844,6 +5871,7 @@ export namespace Prisma {
     password?: SortOrder
     isVerified?: SortOrder
     verifyToken?: SortOrder
+    deleteToken?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -6428,6 +6456,7 @@ export namespace Prisma {
     password: string
     isVerified?: boolean
     verifyToken?: string | null
+    deleteToken?: string | null
     budget?: BudgetCreateNestedOneWithoutUserInput
   }
 
@@ -6438,6 +6467,7 @@ export namespace Prisma {
     password: string
     isVerified?: boolean
     verifyToken?: string | null
+    deleteToken?: string | null
     budget?: BudgetUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -6463,6 +6493,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifyToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deleteToken?: NullableStringFieldUpdateOperationsInput | string | null
     budget?: BudgetUpdateOneWithoutUserNestedInput
   }
 
@@ -6473,6 +6504,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifyToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deleteToken?: NullableStringFieldUpdateOperationsInput | string | null
     budget?: BudgetUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -6482,6 +6514,7 @@ export namespace Prisma {
     password: string
     isVerified?: boolean
     verifyToken?: string | null
+    deleteToken?: string | null
     expenses?: ExpenseCreateNestedManyWithoutUserInput
   }
 
@@ -6492,6 +6525,7 @@ export namespace Prisma {
     password: string
     isVerified?: boolean
     verifyToken?: string | null
+    deleteToken?: string | null
     expenses?: ExpenseUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -6517,6 +6551,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifyToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deleteToken?: NullableStringFieldUpdateOperationsInput | string | null
     expenses?: ExpenseUpdateManyWithoutUserNestedInput
   }
 
@@ -6527,6 +6562,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifyToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deleteToken?: NullableStringFieldUpdateOperationsInput | string | null
     expenses?: ExpenseUncheckedUpdateManyWithoutUserNestedInput
   }
 

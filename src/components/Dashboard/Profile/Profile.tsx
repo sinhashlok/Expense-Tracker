@@ -47,7 +47,8 @@ const Profile = ({
         <h1 className="text-lg md:text-3xl font-semibold">Hi, {user?.name}</h1>
       </div>
       <div className="mt-10">
-        <div className="mt-5 grid grid-cols-2 w-fit">
+        <h1 className="underline font-medium">Review your entire Expenses</h1>
+        <div className="mt-2 grid grid-cols-2 w-fit">
           <div className="flex flex-row w-fit h-fit text-white rounded-lg bg-gradient-to-r from-indigo-500 to-teal-400">
             <div className="aspect-square w-52 flex flex-col justify-center items-center">
               <h1>Total Expense</h1>
