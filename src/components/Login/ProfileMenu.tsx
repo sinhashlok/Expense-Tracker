@@ -35,7 +35,7 @@ export function ProfileMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">Shlok Sinha</Button>
+        <Button variant="outline">dummy tester</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuGroup>

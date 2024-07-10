@@ -38,12 +38,12 @@ const Page = () => {
           >
             Profile
           </Button>
-          <Button
+          {/* <Button
             variant={`${section === 1 ? "default" : "ghost"}`}
             onClick={() => setSection(1)}
           >
             Budget
-          </Button>
+          </Button> */}
           <Button
             variant={`${section === 2 ? "destructive" : "ghost"}`}
             onClick={() => setSection(2)}
@@ -54,7 +54,7 @@ const Page = () => {
         <Separator orientation="vertical" />
       </div>
       <div className="w-full p-5">
-        {section === 0 ? <Profile user={user} expense={expense} /> : section === 1 ? <Budget /> : <Delete />}
+        {section === 0 ? <Profile user={user} expense={expense} /> : section === 1 ? <Budget /> : <Delete user={user} />}
       </div>
     </div>
   );

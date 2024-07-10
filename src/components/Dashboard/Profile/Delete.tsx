@@ -38,7 +38,11 @@ const FormSchema = z.object({
   }),
 });
 
-const Delete = () => {
+const Delete = ({
+  user,
+}: {
+  user: { name: string; email: string } | undefined;
+}) => {
   const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -64,6 +68,19 @@ const Delete = () => {
       .catch((error: AxiosError) => {
         console.log(error);
       });
+  }
+
+  if (user?.email === "test@124.com") {
+    return (
+      <div>
+        <h1 className="text-lg md:text-3xl font-semibold">Access Denied</h1>
+        <p className="lg:w-1/2 text-sm font-light mt-1">
+          * Since this is a dummy user for every, it cannot be deleted.
+          <br />* Once login for all emails are activated this dummy user will
+          be removed
+        </p>
+      </div>
+    );
   }
 
   return (

@@ -23,6 +23,7 @@ import { useState } from "react";
 import Nav from "@/components/Home/Nav";
 import Footer from "@/components/Footer";
 import { loginSchema } from "@/schema/loginSchema";
+import { Separator } from "@/components/ui/separator";
 
 export default function Login() {
   const FormSchema = loginSchema;
@@ -124,6 +125,13 @@ export default function Login() {
                 </p>
               </div>
             </Form>
+            <Separator className="my-2" />
+            <div>
+              <p className="text-sm font-light mt-1">
+                Please login to dummy user for now<br />
+                email: test@124.com, password: 123456
+              </p>
+            </div>
           </div>
         </div>
       </div>

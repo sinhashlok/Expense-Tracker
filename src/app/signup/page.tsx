@@ -23,6 +23,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Nav from "@/components/Home/Nav";
 import Footer from "@/components/Footer";
+import { Separator } from "@/components/ui/separator";
 
 export default function SignUp() {
   const FormSchema = signupSchema;
@@ -139,6 +140,14 @@ export default function SignUp() {
                 </p>
               </div>
             </Form>
+            <Separator className="my-2" />
+            <div>
+              <p className="text-sm font-light mt-1">
+                * Sign up for different emails is not working as I do not have a
+                custom domain set up as of now. For now please go to login, and
+                login to dummy user
+              </p>
+            </div>
           </div>
         </div>
       </div>
