@@ -19,10 +19,13 @@ export async function GET(req: NextRequest) {
     });
 
     const expenseDetails = await prisma.expense.findMany({
+      where: {
+        id: userId,
+      },
       select: {
         amount: true,
         expenseType: true,
-      }
+      },
     });
 
     return NextResponse.json({

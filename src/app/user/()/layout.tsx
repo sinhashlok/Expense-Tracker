@@ -11,7 +11,9 @@ export default function RootLayout({
         <nav>
           <NavLoggedIn />
         </nav>
-        <div className="font-poppins mx-4 md:mx-8 lg:mx-[10%] mt-10">{children}</div>
+        <div className="font-poppins mx-4 md:mx-8 lg:mx-[10%] mt-10">
+          {children}
+        </div>
       </body>
     </html>
   );
