@@ -50,6 +50,8 @@ export default async function sendEmailVerificationToken({
       console.log("Message Sent");
     })
     .catch((err) => {
+      console.log("FAILED", err);
+
       throw Error("Failed to send email", err);
     });
 }

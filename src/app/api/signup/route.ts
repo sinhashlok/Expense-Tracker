@@ -43,7 +43,9 @@ export async function POST(req: NextRequest) {
         password: hashedPassword,
       },
     });
+    console.log("AFTER");
     await sendEmailVerificationToken({ email: email, userId: user.id });
+    console.log("BEFORE");
 
     return NextResponse.json(
       { message: "User created", success: true },
