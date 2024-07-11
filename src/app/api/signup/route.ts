@@ -2,7 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/db";
 import { signupSchema } from "@/schema/signupSchema";
 import bcryptjs from "bcryptjs";
-import sendEmailVerificationToken from "@/utils/sendEmailVerificationToken";
+// import sendEmailVerificationToken from "@/utils/sendEmailVerificationToken";
+import nodemailer from "nodemailer";
+
+const transporter = nodemailer.createTransport({
+  port: 465,
+  host: "smtp.gmail.com",
+  auth: {
+    user: process.env.NODEMAILER_USER,
+    pass: process.env.NODEMAILER_PASS,
+  },
+});
 
 export async function POST(req: NextRequest) {
   try {
@@ -43,9 +53,35 @@ export async function POST(req: NextRequest) {
         password: hashedPassword,
       },
     });
-    console.log("AFTER");
-    await sendEmailVerificationToken({ email: email, userId: user.id });
-    console.log("BEFORE");
+    const userId = user.id;
+
+    const hashedToken = await bcryptjs.hash(userId.toString(), 10);
+    await prisma.user.update({
+      where: {
+        email: email,
+      },
+      data: {
+        verifyToken: hashedToken,
+      },
+    });
+
+    await transporter.sendMail({
+      from: "shlokjp@gmail.com",
+      to: email,
+      subject: "Verification Emai",
+      text: "",
+      html: `<div>
+    <h1>Email Verification</h1>
+    <br />
+    <p>Click here for <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">email verification</a>
+    <br />
+    Or Copy Paste the below URL in your browser:
+    <br />
+    ${process.env.DOMAIN}/verifyemail?token=${hashedToken}
+    </p>
+    </div>`,
+    });
+    console.log("Message sent");
 
     return NextResponse.json(
       { message: "User created", success: true },
