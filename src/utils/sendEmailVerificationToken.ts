@@ -7,15 +7,6 @@ type Props = {
   userId: any;
 };
 
-const transporter = nodemailer.createTransport({
-  port: 465,
-  host: "smtp.gmail.com",
-  auth: {
-    user: process.env.NODEMAILER_USER,
-    pass: process.env.NODEMAILER_PASS,
-  },
-});
-
 export default async function sendEmailVerificationToken({
   email,
   userId,
@@ -31,12 +22,22 @@ export default async function sendEmailVerificationToken({
   });
 
   try {
-    await transporter.sendMail({
-      from: "shlokjp@gmail.com",
-      to: email,
-      subject: "Verification Emai",
-      text: "",
-      html: `<div>
+    await nodemailer
+      .createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: process.env.NODEMAILER_USER,
+          pass: process.env.NODEMAILER_PASS,
+        },
+      })
+      .sendMail({
+        from: process.env.NODEMAILER_USER,
+        to: email,
+        subject: "Verification Emai",
+        text: "",
+        html: `<div>
     <h1>Email Verification</h1>
     <br />
     <p>Click here for <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">email verification</a>
@@ -46,10 +47,9 @@ export default async function sendEmailVerificationToken({
     ${process.env.DOMAIN}/verifyemail?token=${hashedToken}
     </p>
     </div>`,
-    });
-    console.log("Message sent");
-  } catch (error) {
-    console.log("Failed to send mail", error);
-    throw Error("Failed to send mail");
+      });
+    console.log("Email sent to " + email);
+  } catch (e) {
+    console.error(e);
   }
 }
