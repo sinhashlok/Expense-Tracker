@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
 
     const expenseDetails = await prisma.expense.findMany({
       where: {
-        id: userId,
+        userId: userId,
       },
       select: {
         amount: true,
