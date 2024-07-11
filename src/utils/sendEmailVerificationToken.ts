@@ -30,8 +30,8 @@ export default async function sendEmailVerificationToken({
     },
   });
 
-  await transporter
-    .sendMail({
+  try {
+    await transporter.sendMail({
       from: "shlokjp@gmail.com",
       to: email,
       subject: "Verification Emai",
@@ -46,13 +46,10 @@ export default async function sendEmailVerificationToken({
     ${process.env.DOMAIN}/verifyemail?token=${hashedToken}
     </p>
     </div>`,
-    })
-    .then(() => {
-      console.log("Message Sent");
-    })
-    .catch((err) => {
-      console.log("FAILED", err);
-
-      throw Error("Failed to send email", err);
     });
+    console.log("Message sent");
+  } catch (error) {
+    console.log("Failed to send mail", error);
+    throw Error("Failed to send mail");
+  }
 }
