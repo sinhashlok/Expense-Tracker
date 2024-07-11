@@ -19,7 +19,7 @@ export const CATEGORIES_DATA = [
   },
   {
     id: 2,
-    title: "Savings Tracke",
+    title: "Savings Tracker",
     img: "/assets/categories/saving.jpeg",
   },
   {

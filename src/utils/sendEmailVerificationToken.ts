@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import bcryptjs from "bcryptjs";
 import prisma from "@/db";
 
@@ -7,12 +7,18 @@ type Props = {
   userId: any;
 };
 
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.NODEMAILER_USER,
+    pass: process.env.NODEMAILER_PASS,
+  },
+});
+
 export default async function sendEmailVerificationToken({
   email,
   userId,
 }: Props) {
-  const resend = new Resend(process.env.RESEND_API || "");
-
   const hashedToken = await bcryptjs.hash(userId.toString(), 10);
   await prisma.user.update({
     where: {
@@ -23,11 +29,12 @@ export default async function sendEmailVerificationToken({
     },
   });
 
-  await resend.emails
-    .send({
-      from: "expense-tracker@resend.dev",
+  await transporter
+    .sendMail({
+      from: "shlokjp@gmail.com",
       to: email,
-      subject: "Verification Email",
+      subject: "Verification Emai",
+      text: "",
       html: `<div>
     <h1>Email Verification</h1>
     <br />
@@ -39,5 +46,10 @@ export default async function sendEmailVerificationToken({
     </p>
     </div>`,
     })
-    .catch((error) => console.log("Email Error", error));
+    .then(() => {
+      console.log("Message Sent");
+    })
+    .catch((err) => {
+      throw Error("Failed to send email", err);
+    });
 }

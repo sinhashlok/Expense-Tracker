@@ -66,7 +66,7 @@ const Categories = () => {
                     size="sm"
                   >
                     {item.id === 1 || item.id === 4 ? (
-                      "Comming Soon"
+                      "Coming Soon"
                     ) : (
                       <Link href="/login">Try Now!</Link>
                     )}
