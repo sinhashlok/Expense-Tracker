@@ -7,6 +7,6 @@ export const addExpenseSchema = z.object({
     required_error: "Please select an expense type.",
   }),
   createdAt: z.date({
-    required_error: "A date of birth is required.",
+    required_error: "A date of expense is required.",
   }),
 });

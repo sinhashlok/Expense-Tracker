@@ -58,7 +58,7 @@ export default function SignUp() {
 
   return (
     <div>
-      <div className="bg-[url('/assets/authenticate/authImg.jpeg')] lg:pb-14">
+      <div className="bg-[url('/assets/authenticate/authImg.jpeg')] h-screen w-screen lg:pb-14">
         <Toaster />
         <nav>
           <Nav />
@@ -151,9 +151,9 @@ export default function SignUp() {
           </div>
         </div>
       </div>
-      <div className="w-full absolute bottom-0">
+      {/* <div className="w-full absolute bottom-0">
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 }

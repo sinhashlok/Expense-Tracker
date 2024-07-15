@@ -134,7 +134,7 @@ export function AddExpense() {
           name="createdAt"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Date of birth</FormLabel>
+              <FormLabel>Date of expense</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
