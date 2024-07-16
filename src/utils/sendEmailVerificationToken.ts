@@ -1,55 +1,60 @@
 import nodemailer from "nodemailer";
 import bcryptjs from "bcryptjs";
 import prisma from "@/db";
+import Mail from "nodemailer/lib/mailer";
+import SMTPTransport from "nodemailer/lib/smtp-transport";
+import errorMap from "zod/locales/en.js";
+
+const transport = nodemailer.createTransport({
+  host: process.env.MAIL_HOST,
+  port: process.env.MAIL_PORT,
+  secure: process.env.NODE_ENV !== "development",
+  auht: {
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
+  },
+} as SMTPTransport.Options);
 
 type Props = {
-  email: string;
+  sender: Mail.Address;
+  recipient: Mail.Address;
   userId: any;
 };
 
 export default async function sendEmailVerificationToken({
-  email,
+  sender,
+  recipient,
   userId,
 }: Props) {
-  const hashedToken = await bcryptjs.hash(userId.toString(), 10);
-  await prisma.user.update({
-    where: {
-      email: email,
-    },
-    data: {
-      verifyToken: hashedToken,
-    },
-  });
-
   try {
-    await nodemailer
-      .createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true,
-        auth: {
-          user: process.env.NODEMAILER_USER,
-          pass: process.env.NODEMAILER_PASS,
-        },
-      })
-      .sendMail({
-        from: process.env.NODEMAILER_USER,
-        to: email,
-        subject: "Verification Emai",
-        text: "",
-        html: `<div>
-    <h1>Email Verification</h1>
-    <br />
-    <p>Click here for <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">email verification</a>
-    <br />
-    Or Copy Paste the below URL in your browser:
-    <br />
-    ${process.env.DOMAIN}/verifyemail?token=${hashedToken}
-    </p>
-    </div>`,
-      });
-    console.log("Email sent to " + email);
-  } catch (e) {
-    console.error(e);
+    const hashedToken = await bcryptjs.hash(userId.toString(), 10);
+    await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        verifyToken: hashedToken,
+      },
+    });
+
+    return await transport.sendMail({
+      from: sender,
+      to: recipient,
+      subject: "Verification Emai",
+      text: "",
+      html: `<div>
+      <h1>Email Verification</h1>
+      <br />
+      <p>Click here for <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">email verification</a>
+      <br />
+      Or Copy Paste the below URL in your browser:
+      <br />
+      ${process.env.DOMAIN}/verifyemail?token=${hashedToken}
+      </p>
+      </div>`,
+    });
+  } catch (error) {
+    console.log("Failed to send mail", error);
+    throw Error("Failed to send mail");
   }
 }

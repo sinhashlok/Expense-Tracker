@@ -31,6 +31,7 @@ export async function POST(req: NextRequest) {
     const { userId } = payload?.payload;
     const date = new Date(createdAt);
     const month = date.getMonth();
+    console.log("MONTH", month);
 
     await prisma.expense.create({
       data: {

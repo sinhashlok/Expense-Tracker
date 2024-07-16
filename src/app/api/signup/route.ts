@@ -4,6 +4,20 @@ import { signupSchema } from "@/schema/signupSchema";
 import bcryptjs from "bcryptjs";
 import sendEmailVerificationToken from "@/utils/sendEmailVerificationToken";
 
+import nodemailer from "nodemailer";
+import Mail from "nodemailer/lib/mailer";
+import SMTPTransport from "nodemailer/lib/smtp-transport";
+
+const transport = nodemailer.createTransport({
+  host: process.env.MAIL_HOST,
+  port: process.env.MAIL_PORT,
+  secure: process.env.NODE_ENV !== "development",
+  auht: {
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
+  },
+} as SMTPTransport.Options);
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -43,7 +57,22 @@ export async function POST(req: NextRequest) {
         password: hashedPassword,
       },
     });
-    await sendEmailVerificationToken({ email: email, userId: user.id });
+
+    const sender = {
+      name: "Shlok Sinha",
+      address: process.env.NODEMAILER_USER || "",
+    };
+
+    const recipient = {
+      name: user.name,
+      address: user.email,
+    };
+
+    await sendEmailVerificationToken({
+      sender: sender,
+      recipient: recipient,
+      userId: user.id,
+    });
 
     return NextResponse.json(
       { message: "User created", success: true },
@@ -52,6 +81,8 @@ export async function POST(req: NextRequest) {
       }
     );
   } catch (error: any) {
+    console.log(error);
+
     return NextResponse.json(
       { error: error.message, success: false },
       { status: 500 }

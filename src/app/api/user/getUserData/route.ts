@@ -40,6 +40,7 @@ export async function GET(req: NextRequest) {
         },
       },
     });
+
     return NextResponse.json(
       { message: "User found", success: true, data: user },
       { status: 200 }
